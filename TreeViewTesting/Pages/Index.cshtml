@@ -68,17 +68,14 @@
             </ul>
         </li>
     </ul>
-
+    <script src="~/jquery/dist/jquery.min.js"></script>
     <script>
-        var toggler = document.getElementsByClassName("caret");
-        var i;
 
-        for (i = 0; i < toggler.length; i++) {
-            toggler[i].addEventListener("click", function () {
-                this.parentElement.querySelector(".nested").classList.toggle("active");
-                this.classList.toggle("caret-down");
-            });
-        }
+       
+        $.ajax({url:"api/TreeView/section", success: function(result){
+                    $("#section").html(result);
+        }});
+        
     </script>
 </body>
 </html>
