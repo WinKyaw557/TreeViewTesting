@@ -16,16 +16,16 @@ namespace TreeViewTesting.Controllers
             List<LecturesModel> list = new();
             LecturesModel result1 = new() { Id = 1, Name = "Math" };
             list.Add(result1);
-            LecturesModel result2 = new() { Id = 1, Name = "Law" };
+            LecturesModel result2 = new() { Id = 2, Name = "Law" };
             list.Add(result2);
-            LecturesModel result3 = new() { Id = 1, Name = "Eng" };
+            LecturesModel result3 = new() { Id = 3, Name = "Eng" };
             list.Add(result3);
             return Ok(list);
         }
         //Section api
         [HttpGet("section")]
 
-        public IActionResult byaction()
+        public IActionResult byaction(int id)
         {
             List<SectionModel> list= new();
             SectionModel result1 = new() { Id = 1, Section = "A" };
