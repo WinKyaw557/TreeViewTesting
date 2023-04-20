@@ -1,9 +1,10 @@
-﻿
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using TreeViewTesting.Models;
+using Microsoft.AspNetCore.Mvc.ApplicationModels;
+using System.Collections.Generic;
+using TreeViewNet6.Models;
 
-namespace TreeViewTesting.Controllers
+namespace TreeViewNet6.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
@@ -27,7 +28,7 @@ namespace TreeViewTesting.Controllers
 
         public IActionResult byaction(int id)
         {
-            List<SectionModel> list= new();
+            List<SectionModel> list = new();
             SectionModel result1 = new() { Id = 1, Section = "A" };
             list.Add(result1);
             SectionModel result2 = new() { Id = 2, Section = "B" };

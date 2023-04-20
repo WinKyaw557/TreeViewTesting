@@ -54,72 +54,69 @@
     <p>A tree view represents a hierarchical view of information, where each item can have a number of subitems.</p>
     <p>Click on the arrow(s) to open or close the tree branches.</p>
     @*<button id="lecture">Lecture</button>*@
-    <div id="buttonsContainer"></div>
+    <div></div>
     <div class="caret">
-        <a href="#" id="lecturediv">Lecture</a>
-        <ul id="lectures"></ul>
-        
+        <a href="#" id="lectureA">Lecture</a>
+        <div>
+             <ul id="lectures"></ul>
+        </div>
+      
     </div>
-    <div id="buttonsContainer"></div>
-    <div class="caret">
-        <a href="&" id="sectiondiv">Section</a>
-        <ul id="section"> </ul>
-
-    </div>
-
-    <ul>
-        <li>
-            <a>
-               
-            </a>
-           <div>
-                <ul></ul>
-           </div>
-        </li>
-    </ul>
 
     <script src="~/jquery/dist/jquery.min.js"></script>
     <script>
 
-        $('#lecturediv').click(function () {
+        $('#lectureA').click(function () {
 
             $.ajax({
                 url: "api/TreeView/lecture",
                 success: function (data) {
                     console.log(data);
                     $.each(data, function (i, data) {
-                        var itemList = "<li><a id='" + data.id + "_lecture'>" + data.name + "</a>"+
+                        var itemList = "<li><a href='#' id='" + data.id + "_lecture'>" + data.name + "</a>" +
                             "<div id='" + data.id + "_lecture'></div>"
-                        +"</li>";
-                        $('#Sub').append(itemList);
-                    })
+                            + "</li>";
+                        $('#lectures').append(itemList);
+                    });
+                    //$.ajax({
+                    //    url: "api/TreeView/section",
+                    //    success: function (data) {
+                    //        console.log(data);
+                    //        $.each(data, function (i, data) {
+                    //            var itemList = "<li><a id='" + data.id + " _section'>" + data.name + "</a>" +
+                    //                "<div id='" + data.id + " _section'></div>"
+                    //                + "</li>";
+                    //            $('#sectionID').append(itemList);
+                    //        });
+                    //    }
+                    //});
                 }
             });
         });
 
-        $('#sectiondiv').click(function () {
+                                                                                //$('#sectiondiv').click(function () {
+                                                                                        //    console.log('this is test');
+                                                                                        //    //$.ajax({
+                                                                                        //    //    url: "api/TreeView/section",
+                                                                                        //    //    success: function (data) {
+                                                                                        //    //        console.log(data);
+                                                                                        //    //        $.each(data, function (i, data) {
+                                                                                        //    //            var itemList = "<li value='" + data.id + "'>" + data.section + "</li>";
+                                                                                        //    //            $('#sectiondiv').append(itemList);
+                                                                                        //    //        })
+                                                                                        //    //    }
+                                                                                        //    //});
+                                                                                        //});
 
-            $.ajax({
-                url: "api/TreeView/section",
-                success: function (data) {
-                    console.log(data);
-                    $.each(data, function (i, data) {
-                        var itemList = "<li value='" + data.id + "'>" + data.section + "</li>";
-                        $('#Sub').append(itemList);
-                    })
-                }
-            });
-        });
+                                                                                        //var toggler = document.getElementsByClassName("caret");
+                                                                                        //var i;
 
-        //var toggler = document.getElementsByClassName("caret");
-        //var i;
-
-        //for (i = 0; i < toggler.length; i++) {
-        //    toggler[i].addEventListener("click", function () {
-        //        this.parentElement.querySelector(".nested").classList.toggle("active");
-        //        this.classList.toggle("caret-down");
-        //    });
-        //}
+                                                                                        //for (i = 0; i < toggler.length; i++) {
+                                                                                        //    toggler[i].addEventListener("click", function () {
+                                                                                        //        this.parentElement.querySelector(".nested").classList.toggle("active");
+                                                                                        //        this.classList.toggle("caret-down");
+                                                                                        //    });
+                                                                                        //}
     </script>
 </body>
 </html>
