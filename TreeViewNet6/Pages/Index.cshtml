@@ -54,13 +54,17 @@
 
 <div class="caret">
     <a href="#" id="lectureA">Lecture</a>
-    
+
     <div>
         <ul id="lectures"></ul>
+    </div>
+</div>
+<div class="caret">
+    <b href="$" id="ှsection">Secrion</b>
+    <div>
         <ul id="sections"></ul>
     </div>
 </div>
-
 
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script>
@@ -72,48 +76,51 @@
             success: function (data) {
                 console.log(data);
                 $.each(data, function (i, data) {
-                    var itemList = "<li><a href='#' id='" + data.id + "_lecture'>" + data.name + "</a>" +
-                        "<div id='" + data.id + "_lecture'></div>" + "<li><a href='#' id='" + data.id + "_lecture'>"
+                    var itemList = "<li><a href='#' id='" + data.id + "_lecture'>" + data.name + "</a>" + "<b href='$' id='" + data.id + "</b>" +
+                        "<div id='" + data.id + "_lecture'></div>"
                         + "</li>";
                     $('#lectures').append(itemList);
                 });
-                //$.ajax({
-                //    url: "api/TreeView/section",
-                //    success: function (data) {
-                //        console.log(data);
-                //        $.each(data, function (j, data) {
-                //            var itemList = "<li><a id='" + data.id + " _section'>" + data.name + "</a>" +
-                //                "<div id='" + data.id + " _section'></div>"
-                //                + "</li>";
-                //            $('#sections').append(itemList);
-                //        });
-                //    }
-                //});
+                $('#section').click(function () {
+                    $.ajax({
+                        url: "api/TreeView/section",
+                        success: function (data) {
+                            console.log(data);
+                            $.each(data, function (j, data) {
+                                var itemList = "<li><a id='" + data.id + " _section'>" + data.name + "</a>" +
+                                    "<div id='" + data.id + " _section'></div>"
+                                    + "</li>";
+                                $('#sections').append(itemList);
+                            });
+                        }
+                    });
+                });
+
             }
         });
     });
 
-                                                                                        //$('#sectiondiv').click(function () {
-                                                                                                //    console.log('this is test');
-                                                                                                //    //$.ajax({
-                                                                                                //    //    url: "api/TreeView/section",
-                                                                                                //    //    success: function (data) {
-                                                                                                //    //        console.log(data);
-                                                                                                //    //        $.each(data, function (i, data) {
-                                                                                                //    //            var itemList = "<li value='" + data.id + "'>" + data.section + "</li>";
-                                                                                                //    //            $('#sectiondiv').append(itemList);
-                                                                                                //    //        })
-                                                                                                //    //    }
-                                                                                                //    //});
-                                                                                                //});
+                                                                                                            //$('#sectiondiv').click(function () {
+                                                                                                                    //    console.log('this is test');
+                                                                                                                    //    //$.ajax({
+                                                                                                                    //    //    url: "api/TreeView/section",
+                                                                                                                    //    //    success: function (data) {
+                                                                                                                    //    //        console.log(data);
+                                                                                                                    //    //        $.each(data, function (i, data) {
+                                                                                                                    //    //            var itemList = "<li value='" + data.id + "'>" + data.section + "</li>";
+                                                                                                                    //    //            $('#sectiondiv').append(itemList);
+                                                                                                                    //    //        })
+                                                                                                                    //    //    }
+                                                                                                                    //    //});
+                                                                                                                    //});
 
-                                                                                                //var toggler = document.getElementsByClassName("caret");
-                                                                                                //var i;
+                                                                                                                    //var toggler = document.getElementsByClassName("caret");
+                                                                                                                    //var i;
 
-                                                                                                //for (i = 0; i < toggler.length; i++) {
-                                                                                                //    toggler[i].addEventListener("click", function () {
-                                                                                                //        this.parentElement.querySelector(".nested").classList.toggle("active");
-                                                                                                //        this.classList.toggle("caret-down");
-                                                                                                //    });
-                                                                                                //}
+                                                                                                                    //for (i = 0; i < toggler.length; i++) {
+                                                                                                                    //    toggler[i].addEventListener("click", function () {
+                                                                                                                    //        this.parentElement.querySelector(".nested").classList.toggle("active");
+                                                                                                                    //        this.classList.toggle("caret-down");
+                                                                                                                    //    });
+                                                                                                                    //}
 </script>
