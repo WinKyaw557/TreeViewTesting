@@ -26,7 +26,7 @@ namespace TreeViewNet6.Controllers
         //Section api
         [HttpGet("section")]
 
-        public IActionResult byaction(int id)
+        public IActionResult byaction(int Id)
         {
             List<SectionModel> list = new();
             SectionModel result1 = new() { Id = 1, Section = "A" };
