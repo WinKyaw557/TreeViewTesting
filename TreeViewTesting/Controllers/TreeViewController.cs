@@ -28,11 +28,11 @@ namespace TreeViewTesting.Controllers
         public IActionResult byaction(int id)
         {
             List<SectionModel> list= new();
-            SectionModel result1 = new() { Id = 1, Section = "A" };
+            SectionModel result1 = new() { Id = 1, Name = "A" };
             list.Add(result1);
-            SectionModel result2 = new() { Id = 2, Section = "B" };
+            SectionModel result2 = new() { Id = 2, Name = "B" };
             list.Add(result2);
-            SectionModel result3 = new() { Id = 3, Section = "C" };
+            SectionModel result3 = new() { Id = 3, Name = "C" };
             list.Add(result3);
             return Ok(list);
         }
@@ -42,11 +42,11 @@ namespace TreeViewTesting.Controllers
         public IActionResult StudentAction()
         {
             List<StudentsModel> list = new();
-            StudentsModel result1 = new StudentsModel { Id = 1, StudentName = "Aye Aye" };
+            StudentsModel result1 = new StudentsModel { Id = 1, Name = "Aye Aye" };
             list.Add(result1);
-            StudentsModel result2 = new StudentsModel { Id = 2, StudentName = "Aung Aung" };
+            StudentsModel result2 = new StudentsModel { Id = 2, Name = "Aung Aung" };
             list.Add(result2);
-            StudentsModel result3 = new StudentsModel { Id = 3, StudentName = "Win Win" };
+            StudentsModel result3 = new StudentsModel { Id = 3, Name = "Win Win" };
             list.Add(result3);
             return Ok(list);
         }

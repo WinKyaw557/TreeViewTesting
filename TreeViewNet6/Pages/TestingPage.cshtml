@@ -1,0 +1,84 @@
+﻿@page
+@model TreeViewNet6.Pages.TestingPageModel
+@{
+}
+
+<div>
+    <ul>
+        <li>
+            <a href="#" id="lecture">
+                Lecture
+            </a>
+            <div id="lectureDiv">
+            </div>
+        </li>
+    </ul>
+</div>
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script>
+    var clickCount=0;
+
+    $('#lecture').click(function () {
+        getTreeView("lecture", undefined, "lecture");
+    });
+
+    function getTreeView(parent, targetId, new_name) {
+        var url = "api/TreeView/" + new_name;
+        if (targetId !== undefined) {
+            url += "?id=" + targetId;
+        }
+
+        $.ajax({
+            url: url,
+            success: function (data) {
+                var ul = document.createElement('ul');
+
+                $.each(data, function (i, data) {
+
+                    var li = document.createElement('li');
+
+                    var a = document.createElement('a');
+                    a.id = data.id + "_" + new_name;
+                    a.href = "#";
+                    a.innerText = data.name;
+                    console.log(data);
+
+                    li.append(a);
+
+                    var div = document.createElement('div');
+                    div.id = data.id + "_" + new_name + "DIV";
+                    li.append(div);
+
+                    a.addEventListener('click', function (e) {
+                        if (clickCount==0){
+                            getTreeView(parent, data.id, "section");
+                        }
+                        else if(clickCount ==1){
+                            getTreeView("section", data.id, "student")
+                        }
+                        else {
+                            getTreeView("student", data.id, "grade")
+                        }
+                        clickCount++;
+
+                    });
+
+                    ul.append(li);
+
+                });
+
+                if (targetId !== undefined) {
+                    $('#' + targetId + '_' + parent + 'DIV').html('');
+                    $('#' + targetId + '_' + parent + 'DIV').append(ul);
+                }
+                else {
+                    $('#' + parent + 'Div').html('');
+                    $('#' + parent + 'Div').append(ul);
+                }
+
+            }
+        });
+    }
+
+</script>
